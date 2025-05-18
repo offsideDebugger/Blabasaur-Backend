@@ -1,7 +1,8 @@
+require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
-const { key }=require('./key')
+// const { key }=require('./key')
 const app = express();
 const Groq=require('groq-sdk')
 app.use(cors());
@@ -10,7 +11,7 @@ app.use(express.json());
 
 
 
-const groq = new Groq({ apiKey: key });
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 
 app.post('/api/advicegen', async (req, res) => {
